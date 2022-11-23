@@ -68,5 +68,49 @@
 --- Ex: apagarProduto(PROD13)
 
 
+## Testes
+#### Utilizando o postman é possível realizar testes
+- https://www.postman.com/
+- Teste 1
+--- ``` inserirCliente(123,Luiz) ```
+---- Deve retornar "Cliente cadastrado com sucesso"
+- Teste 2
+---  ```recuperarCliente(123)```
+--- Deve retornar Objeto com Name = Luiz
+- Teste 3
+--- ```modificarCliente(123,Gustavo)```
+- Teste 4
+--- ```recuperarCliente(123)```
+--- Deve retornar Objeto com Name = Gustavo
+- Teste 5
+--- ```apagarCliente(123)```
+--- Deve retornar Cliente apagado com sucesso
+- Teste 6
+--  ```recuperarCliente(123)```
+--- Deve retornar Cliente não existe
+- Teste 7
+--- ``` inserirCliente(123,Luiz) ```
+---- Deve retornar "Cliente cadastrado com sucesso"
+- Teste 8
+--  ```inserirProduto(123,Leite,2.0,2))```
+--- Deve retornar "Produto cadastrado com sucesso"
+- Teste 9
+--  ```recuperarProduto(123)```
+--- Deve retornar objeto Produto com Name = Leite
+- Teste 10
+--  ```modificarProduto(123,Laranja,2.0,2)```
+--- Deve retornar "Produto atualizado com sucesso"
+- Teste 11
+--  ```recuperarProduto(123)```
+--- Deve retornar  objeto Produto com Name = Laranja
+- Teste 12
+--  ```apagarProduto(123)```
+--- Deve retornar  objeto Produto com Name = Laranja
+- Teste 13
+--  ```recuperarProduto(123)```
+--- Deve retornar  "Produto não existe"
+
 # Arquitetura
-Foi usado uma arquitetura em camadas aonde se tem a parte de Domain que fica as entites, a parte de Application aonde fica a logica de negocio e a parte de Repository para persistencia, além da inversão e injeção de depência para facilitar manipular classes.O software foi programado para conseguir suportar múltiplos usuários.
+Foi usado uma arquitetura em camadas aonde se tem a parte de Domain que fica as entites, a parte de application aonde fica a logica de negocio e a parte de repository para persistencia, além da inversão e injeção de depência para facilitar manipular classes.
+
+Para a parte de cache foi usando uma Lista simples de objeto
