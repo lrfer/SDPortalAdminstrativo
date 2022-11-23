@@ -6,8 +6,7 @@
 - Necessário a versão do .net 6.0 tanto SDK quanto Run time https://dotnet.microsoft.com/en-us/download
 - Para start a aplicação precisa-se do comando``` dotnet run + (porta que deseja que ela suba) ex: dotnet run 51855```  
 - Através da aplicação no one drive só necessita digitar ```./WS.SERVER + PORTA``` nela NÃO É SE NECESSÁRIO NENHUM DOWNLOAD DO .NET
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
+
 
 # Objetos
 
