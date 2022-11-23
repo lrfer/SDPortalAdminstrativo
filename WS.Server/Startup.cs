@@ -43,6 +43,7 @@ namespace StartupService
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
+            Console.WriteLine($"Aplicação de pé no endereço : \n http://localhost:{port}/");
             var conectionString = $"http://localhost:{port}/";
             httpListener.Prefixes.Add(conectionString);
             httpListener.Start();

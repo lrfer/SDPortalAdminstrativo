@@ -194,7 +194,7 @@ namespace Server.Config
             var charsToRemove = new string[] { "(", ")", "\n","\r"};
             foreach (var c in charsToRemove)
             {
-                str = str.Replace(c, string.Empty);
+                str = str.Replace(c, string.Empty).Trim().ToUpper();
             }
             return str;
         }

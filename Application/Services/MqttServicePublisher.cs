@@ -16,7 +16,6 @@ namespace Application.Services
                 var options = new MqttClientOptionsBuilder()
                                   .WithClientId(Guid.NewGuid().ToString())
                                   .WithTcpServer(Const.ConnectionMqtt, Const.ConnectionMqttPort)
-                                  .WithCleanSession()
                                   .Build();
 
                 await client.ConnectAsync(options);

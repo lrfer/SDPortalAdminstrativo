@@ -59,9 +59,9 @@ namespace Application.Repository
         public async Task<Produto> RecuperarProduto(string cid)
         {
             var produtoLocal = produtosCache.FirstOrDefault(x => x.ProdutctId == cid);
+            var produtoBanco = produtosBanco.FirstOrDefault(x => x.ProdutctId == cid);
             if (produtoLocal is null)
             {
-                var produtoBanco = produtosBanco.FirstOrDefault(x => x.ProdutctId == cid);
                 if (produtoBanco is null)
                     return null;
                 else
@@ -70,6 +70,16 @@ namespace Application.Repository
                     return produtoBanco;
                 }
 
+            }
+            else if (produtoBanco is not null)
+            {
+                if (produtoLocal.Name == produtoBanco.Name && produtoLocal.Price == produtoBanco.Price)
+                    return produtoLocal;
+                else
+                {
+                    SyncBanco();
+                    return produtoBanco;
+                }
             }
             else
                 return produtoLocal;

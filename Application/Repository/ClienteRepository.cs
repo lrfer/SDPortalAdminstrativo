@@ -34,8 +34,9 @@ namespace Application.Repository
             var cli = await RecuperarCliente(cliente.ClientId);
             if (cli is not null)
             {
-                clientesCache.FirstOrDefault(x=> x.ClientId == cli.ClientId);
-                await SalvarNoBanco(cliente);
+                var cl  = clientesCache.FirstOrDefault(x=> x.ClientId == cli.ClientId);
+                cl.Name = cliente.Name;
+                await SalvarNoBanco(cl);
                 return 1;
             }
             else
@@ -59,9 +60,9 @@ namespace Application.Repository
         public async Task<Cliente> RecuperarCliente(string cid)
         {
             var clienteLocal = clientesCache.FirstOrDefault(x => x.ClientId == cid);
+            var clienteBanco = clientesBanco.FirstOrDefault(x => x.ClientId == cid);
             if (clienteLocal is null)
             {
-                var clienteBanco = clientesBanco.FirstOrDefault(x => x.ClientId == cid);
                 if (clienteBanco is null)
                     return null;
                 else
@@ -70,6 +71,17 @@ namespace Application.Repository
                     return clienteBanco;
                 }
 
+            }
+            else if(clienteBanco is not null)
+            {
+                if (clienteLocal.Name == clienteBanco.Name)
+                    return clienteLocal;
+                else
+                {
+                    SyncBanco();
+                    return clienteBanco;
+                }
+                    
             }
             else
                 return clienteLocal;
